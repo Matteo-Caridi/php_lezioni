@@ -12,10 +12,7 @@
 <body>
 
 
-
     <!-- QUI FUORI è HTML -->
-
-
 
 
     <?php
@@ -28,11 +25,6 @@
     echo $nome;
 
     ?>
-
-
-
-
-
 
     <!-- QUI FUORI è HTML -->
 
