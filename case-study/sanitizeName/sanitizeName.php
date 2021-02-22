@@ -3,8 +3,10 @@
 function sanitizeName($name)
 {
 
-    $noString = strip_tags($name);
+    // $noString = strip_tags($name);
 
+
+    $noString = filter_var($name, FILTER_SANITIZE_STRING);
     $tinyName = preg_replace('/[^a-z A-Z]+/', '', $noString);
     $explodename = explode(" ", $tinyName);
     $correctNames = array_map('correctCase', $explodename);
@@ -17,7 +19,7 @@ function sanitizeName($name)
 
 function correctCase($name)
 {
-  
+
 
     // il/i nomi tipo 'aAa' | 'AAA' con strtolower diventano --> 'aaa' | 'aaa'
     $nameLowercase = strtolower($name);
