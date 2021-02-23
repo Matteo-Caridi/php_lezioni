@@ -1,6 +1,6 @@
 <?php
 
-require 'sanitizeName_acronimGenerator\acronimGenerator\acronimGenerator.php';
+require 'acronimGenerator.php';
 
 $dataset = [
     ['gioco molto difficile', 'G.M.D.', __LINE__],
