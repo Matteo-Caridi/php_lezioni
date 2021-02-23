@@ -5,8 +5,8 @@ function acronimGenerator($text)
 
     $lowerCase = strtolower($text);
     $upperCase = ucwords($lowerCase);
-    $acronimo = preg_replace('/(?![A-Z])./', ' ', $upperCase);
-    $toglipunti = preg_replace('/[ ]+/','.',$acronimo);
+    $getFirstLetter = preg_replace('/(?![A-Z])./', ' ', $upperCase);
+    $addDots = preg_replace('/[ ]+/','.',$getFirstLetter);
 
-    return $toglipunti;
+    return $addDots;
 }
