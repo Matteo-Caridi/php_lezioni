@@ -1,27 +1,12 @@
 <?php
 
-
-
-
-function acronimeGenerator($name)
+function acronimGenerator($text)
 {
 
-    // il/i nomi tipo 'aAa' | 'AAA' con strtolower diventano --> 'aaa' | 'aaa'
-    $nameLowercase = strtolower($name);
-    // se abbiamo tipo 'aaa' con ucfirst diventa --> 'Aaa
-    $uppercasename = ucwords($nameLowercase);
+    $lowerCase = strtolower($text);
+    $upperCase = ucwords($lowerCase);
+    $acronimo = preg_replace('/(?![A-Z])./', ' ', $upperCase);
+    $toglipunti = preg_replace('/[ ]+/','.',$acronimo);
 
-    $acronimo = preg_split("/(?<=\s|^)[a-z]/i", $uppercasename);
-    // $correctNames = array_map('correctCase', $name);
-
-
-
-    return $acronimo;
+    return $toglipunti;
 }
-
-// function correctCase($name)
-// {
-  
-
-//     return $uppercasename;
-// }
