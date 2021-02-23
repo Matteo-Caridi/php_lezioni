@@ -39,9 +39,9 @@ foreach ($dataset as $key => $row) {
 
 
     if ($result == $atteso) {
-        // echo "Test passato - tutto ok nella linea: $line \n";
+        echo "Test passato - tutto ok nella linea: $line \n";
     } else {
-        var_dump($result);
+        // var_dump($result);
 
         echo "Test NON passato nella linea: $line \n";
     }
