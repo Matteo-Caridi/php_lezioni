@@ -1,7 +1,7 @@
 <?php
 
 // Il comando php ... viene eseguito dalla root del progetto
-require 'sanitizeName_acronimGenerator/sanitizeName.php';
+require 'sanitizeName_acronimGenerator/sanitizeName/sanitizeName.php';
 
 // require './sanitizeName.php';
 
