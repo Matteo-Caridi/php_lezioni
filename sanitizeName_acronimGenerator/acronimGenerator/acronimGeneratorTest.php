@@ -22,9 +22,9 @@ foreach ($dataset as $key => $row) {
 
     if ($result == $atteso) {
         echo "Test passato - tutto ok nella linea: $line \n";
-    } else {
         var_dump($result);
-
+    } else {
         echo "Test NON passato nella linea: $line \n";
+        var_dump($result);
     }
 }
