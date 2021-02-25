@@ -3,8 +3,7 @@
 function acronimGenerator($text)
 {
 
-    $lowerCase = strtolower($text);
-    $upperCase = ucwords($lowerCase);
+    $upperCase = ucwords($name);
     $getFirstLetter = preg_replace('/(?![A-Z])./', ' ', $upperCase);
     $addDots = preg_replace('/[ ]+/','.',$getFirstLetter);
 
