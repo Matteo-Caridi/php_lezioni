@@ -1,11 +1,12 @@
 <?php
 
-
-function acronimeGenerator($name)
+function acronimGenerator($text)
 {
-    $upperCase = ucwords($name);
+
+    $lowerCase = strtolower($text);
+    $upperCase = ucwords($lowerCase);
     $getFirstLetter = preg_replace('/(?![A-Z])./', ' ', $upperCase);
-    $addDots = preg_replace('/[ ]+/', '.', $getFirstLetter);
+    $addDots = preg_replace('/[ ]+/','.',$getFirstLetter);
 
     return $addDots;
 }
