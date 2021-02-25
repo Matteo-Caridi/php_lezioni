@@ -8,7 +8,7 @@
     <title>Document</title>
     <style>
         ul {
-            text-align: center;
+            list-style-type: none;
             border: 1px solid red;
             width: 200px;
         }
