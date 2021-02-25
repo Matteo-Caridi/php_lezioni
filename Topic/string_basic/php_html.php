@@ -5,7 +5,8 @@ $colors = ['red', 'green', 'blue'];
 ?>
 
 <ul>
-    <li>red</li>
-    <li>green</li>
-    <li>blue</li>
+    <?php foreach ($colors as $color) { ?>
+        <li><?php echo $color ?></li>
+
+    <?php } ?>
 </ul>
