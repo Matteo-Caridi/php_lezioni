@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 system("clear");
 require 'case-study\tasklistArray\lib\JSONReader.php';
+require 'vendor\testTools\testTool.php';
 
 
 $dataset = [
@@ -39,13 +40,13 @@ foreach ($dataset as $row) {
 
     try {
         $filepath = $row['filepath'];
-        $result = JSONReader($filepath);
+        $actual = JSONReader($filepath);
 
 
         if (isset($row['type'])) {
             $type = $row['type'];
-            var_dump(gettype($result) === $type);
-            var_dump(count($result) === $row['count']);
+            var_dump(gettype($actual) === $type);
+            var_dump(count($actual) === $row['count']);
         }
     } catch (Exception $e) {
         var_dump($e->getMessage() == $row['error']);
