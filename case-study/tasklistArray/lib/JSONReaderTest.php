@@ -45,7 +45,7 @@ foreach ($dataset as $row) {
 
         if (isset($row['type'])) {
             $type = $row['type'];
-            var_dump(gettype($actual) === $type);
+            assertEquals('array', gettype($actual));
             var_dump(count($actual) === $row['count']);
         }
     } catch (Exception $e) {
