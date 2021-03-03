@@ -46,11 +46,13 @@ foreach ($dataset as $row) {
         if (isset($row['type'])) {
             $type = $row['type'];
             assertEquals('array', gettype($actual), 'ottengo un array');
-            var_dump(count($actual) === $row['count']);
+            if (count($actual) === $row['count']) {
+                echo "stesso numero di elementi: " . $row['count'] . "\n";
+            };
         }
     } catch (Exception $e) {
-        var_dump($e->getMessage() == $row['error']);
-        var_dump($e->getCode() == $row['errorCode']);
-        echo "line: " . $e->getLine() . " ";
+        echo 'Caught exception: ' . $e->getMessage() . ' ' . $e->getCode() . ' ' .   "line: " . $e->getLine() . "\n";
+        // var_dump($e->getMessage() == $row['error']);
+        // var_dump($e->getCode() == $row['errorCode']);
     }
 };
