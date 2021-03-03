@@ -13,8 +13,9 @@ function JSONReader(string $filepath): ?array
 
         $fileString = file_get_contents($filepath);
         $res = json_decode($fileString, true);
-        if (json_last_error() != JSON_ERROR_NONE) {
-            throw new Exception('syntax-error', 123);
+        $code = json_last_error();
+        if ($code  != JSON_ERROR_NONE) {
+            throw new Exception('syntax-error', $code);
         }
     } else {
         throw new Exception('file not exist', 404);
