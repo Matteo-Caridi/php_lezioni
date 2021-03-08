@@ -1,10 +1,19 @@
 <?php
+
 // Dipendenze
 require './lib/JSONReader.php';
 // Model
 $taskList = JSONReader('./dataset/TaskList.json');
-?>
 
+if (isset($_GET['searchText'])) {
+    $searchText = trim(filter_var($_GET['searchText'], FILTER_SANITIZE_STRING));
+    // $taskList = array_filter();
+} else {
+    $searchText = "";
+}
+
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -17,11 +26,10 @@ $taskList = JSONReader('./dataset/TaskList.json');
 </head>
 
 <body>
-    <form>
+    <form action="index.php">
 
-        <input type="text" value="" placeholder="Inserisci cosa cercare">
+        <input type="text" name="searchText" value="<?= $searchText ?>" placeholder="Inserisci cosa cercare">
         <button type="submit">Cerca</button>
-
 
     </form>
 
