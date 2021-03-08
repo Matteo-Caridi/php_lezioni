@@ -1,7 +1,8 @@
 <?php
-
-require './case-study/tasklistArray/dataset/TaskList.json';
-
+// Dipendenze
+require './lib/JSONReader.php';
+// Model
+$taskList = JSONReader('./dataset/TaskList.json');
 ?>
 
 <!DOCTYPE html>
@@ -25,11 +26,16 @@ require './case-study/tasklistArray/dataset/TaskList.json';
     </form>
 
     <ul>
-        <?php foreach ($taskList as $task) { ?>
+        <?php foreach ($taskList as $task) {
+
+            $taskName = $task['taskName'];
+            $status = $task['status'];
+        ?>
             <li class="tasklist-item tasklist-item-<?= $status ?>">
 
-                <?= $task ?>
-
+                <?= $taskName ?>
+                <?= '|' ?>
+                <?= $status ?>
             </li>
         <?php } ?>
     </ul>
