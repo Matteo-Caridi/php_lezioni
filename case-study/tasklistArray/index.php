@@ -9,12 +9,12 @@ $taskList = JSONReader('./dataset/TaskList.json');
 if (isset($_GET['searchText']) && (trim($_GET['searchText']) !== '')) {
     $searchText = trim(filter_var($_GET['searchText'], FILTER_SANITIZE_STRING));
     $taskList = array_filter($taskList, searchText($searchText));
-} else {
-    if (isset($_GET['status']) && (isset($_GET['status']) !== '')) {
-        $status = $_GET['status'];
-        $taskList = array_filter($taskList, searchStatus($status));
-    }
+    $_GET['searchText'] = "";
+} elseif (isset($_GET['status']) && (isset($_GET['status']) !== '')) {
+    $status = $_GET['status'];
+    $taskList = array_filter($taskList, searchStatus($status));
 }
+
 
 
 ?>
@@ -33,20 +33,22 @@ if (isset($_GET['searchText']) && (trim($_GET['searchText']) !== '')) {
     <form action="index.php">
 
         <input type="text" name="searchText" value="" placeholder="Inserisci cosa cercare">
+
+
         <button type="submit">Cerca</button>
 
         <div id="status">
-
-            <input type="radio" name="status" value="progress" id="progress">
+        
+            <input type="radio" name="status" value="progress" id="progress" <?php if(isset($_GET['status']) && $_GET['status'] =="progress" ){echo "checked";}?>>
             <label for="progress">Progress</label>
 
-            <input type="radio" name="status" value="done" id="done">
+            <input type="radio" name="status" value="done" id="done" <?php if(isset($_GET['status']) && $_GET['status'] =="done" ){echo "checked";}?>>
             <label for="done">Done</label>
 
-            <input type="radio" name="status" value="todo" id="todo">
+            <input type="radio" name="status" value="todo" id="todo" <?php if(isset($_GET['status']) && $_GET['status'] =="todo" ){echo "checked";}?>>
             <label for="todo">To Do</label>
 
-            <input type="radio" name="status" value="all" id="all">
+            <input type="radio" name="status" value="all" id="all" <?php if(isset($_GET['status']) && $_GET['status'] =="all" ){echo "checked";}?>>
             <label for="all">Mostra tutto</label>
 
         </div>
@@ -58,12 +60,15 @@ if (isset($_GET['searchText']) && (trim($_GET['searchText']) !== '')) {
 
             $taskName = $task['taskName'];
             $status = $task['status'];
+            $expireDate = $task['expirationDate'];
         ?>
             <li class="tasklist-item tasklist-item-<?= $status ?>">
 
                 <?= $taskName ?>
                 <?= '|' ?>
                 <?= $status ?>
+                <?= '|' ?>
+                <?= $expireDate ?>
             </li>
         <?php } ?>
     </ul>

@@ -15,7 +15,11 @@ function searchText($searchText)
 function searchStatus($status)
 {
     return function ($taskItem) use ($status) {
-        $result= (strpos($taskItem['status'], $status)) !== false;
-        return $result;
+        if ($status !== 'all') {
+            $result = (strpos($taskItem['status'], $status)) !== false;
+            return $result;
+        } else {
+            return $taskItem;
+        }
     };
 }
