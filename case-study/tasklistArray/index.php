@@ -6,12 +6,15 @@ require './lib/searchFunctions.php';
 // Model
 $taskList = JSONReader('./dataset/TaskList.json');
 
-if (isset($_GET['searchText'])) {
+if (isset($_GET['searchText']) && (trim($_GET['searchText']) !== '')) {
     $searchText = trim(filter_var($_GET['searchText'], FILTER_SANITIZE_STRING));
     $taskList = array_filter($taskList, searchText($searchText));
 } else {
-    $searchText = "";
-} 
+    if (isset($_GET['status']) && (isset($_GET['status']) !== '')) {
+        $status = $_GET['status'];
+        $taskList = array_filter($taskList, searchStatus($status));
+    }
+}
 
 
 ?>
@@ -29,8 +32,24 @@ if (isset($_GET['searchText'])) {
 <body>
     <form action="index.php">
 
-        <input type="text" name="searchText" value="<?= $searchText ?>" placeholder="Inserisci cosa cercare">
+        <input type="text" name="searchText" value="" placeholder="Inserisci cosa cercare">
         <button type="submit">Cerca</button>
+
+        <div id="status">
+
+            <input type="radio" name="status" value="progress" id="progress">
+            <label for="progress">Progress</label>
+
+            <input type="radio" name="status" value="done" id="done">
+            <label for="done">Done</label>
+
+            <input type="radio" name="status" value="todo" id="todo">
+            <label for="todo">To Do</label>
+
+            <input type="radio" name="status" value="all" id="all">
+            <label for="all">Mostra tutto</label>
+
+        </div>
 
     </form>
 
