@@ -23,3 +23,9 @@ function searchStatus($status)
         }
     };
 }
+
+function searchDate($expire){
+    return function ($taskItem) use($expire){
+        return (strpos($taskItem['expirationDate'],$expire)!== false);
+    };
+}
