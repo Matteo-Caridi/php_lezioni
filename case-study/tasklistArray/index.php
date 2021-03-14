@@ -9,13 +9,12 @@ $taskList = JSONReader('./dataset/TaskList.json');
 if (isset($_GET['searchText']) && (trim($_GET['searchText']) !== '')) {
     $searchText = trim(filter_var($_GET['searchText'], FILTER_SANITIZE_STRING));
     $taskList = array_filter($taskList, searchText($searchText));
-    $_GET['searchText'] = "";
 } elseif (isset($_GET['status']) && (isset($_GET['status']) !== '')) {
     $status = $_GET['status'];
     $taskList = array_filter($taskList, searchStatus($status));
 } elseif (isset($_GET['expireDate']) && (isset($_GET['expireDate']) !== '')) {
-    $expire = $_GET['expireDate'];
-    $taskList = array_filter($taskList, searchDate($expire));
+        $expire = $_GET['expireDate'];
+        $taskList = array_filter($taskList, searchDate($expire));
 }
 
 
