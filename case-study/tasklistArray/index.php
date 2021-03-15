@@ -34,8 +34,8 @@ if (isset($_GET['searchText']) && (trim($_GET['searchText']) !== '')) {
 <body>
     <form action="index.php">
 
-        <input type="text" name="searchText" value="" placeholder="Inserisci cosa cercare">
-        <input type="text" name="expireDate" value="" placeholder="Inserisci data">
+        <input type="text" name="searchText" value="<?php if (isset($searchText)){echo $searchText;}else{echo "";}; ?>" placeholder="Inserisci cosa cercare">
+        <input type="text" name="expireDate" value="<?php if (isset($expire)){echo $expire;}else{echo "";}; ?>" placeholder="Inserisci data">
 
         <button type="submit">Cerca</button>
 
