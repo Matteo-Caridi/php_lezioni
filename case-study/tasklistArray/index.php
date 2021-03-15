@@ -12,7 +12,7 @@ if (isset($_GET['searchText']) && (trim($_GET['searchText']) !== '')) {
 } elseif (isset($_GET['status']) && (isset($_GET['status']) !== '')) {
     $status = $_GET['status'];
     $taskList = array_filter($taskList, searchStatus($status));
-} elseif (isset($_GET['expireDate']) && (isset($_GET['expireDate']) !== '')) {
+} elseif (isset($_GET['expireDate']) && (trim($_GET['expireDate']) !== '')) {
         $expire = $_GET['expireDate'];
         $taskList = array_filter($taskList, searchDate($expire));
 }
