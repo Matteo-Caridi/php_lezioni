@@ -12,13 +12,21 @@ class Task
     {
         //istanza della classe DateTime
         $today = new DateTime();
+                
         //print_r(gettype($today)); --> ci darà object
         //get_class($today) --> DateTime
+
         $task = new DateTime($this->expirationDate);
+        // $task -> getTimestamp();
+        // echo $task-> format('d F Y')."\t";
         //se vero allora la task è scaudata
         //è una valutazione di verità
-        echo $task->getTimestamp()< $today->getTimestamp();
-        return $task > $today;
+        if ($task->getTimestamp()< $today->getTimestamp()){
+            return true;
+        }else{
+            return false;
+        }
+        // return $task > $today;
     }
 
     public function getExpirationDate()

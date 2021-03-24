@@ -54,6 +54,14 @@ $taskListObj = array_map(function ($taskArray) {
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tasklist a oggetti</title>
+    <style>
+        body table,
+        td {
+            border: 1px solid black;
+            text-align: center;
+
+        }
+    </style>
 </head>
 
 <body>
@@ -70,7 +78,7 @@ $taskListObj = array_map(function ($taskArray) {
             <tr>
                 <td><?= $key ?> </td>
                 <td><?php echo $task->taskName ?></td>
-                <td><?php echo $task->isExpired() ? "scaduto" : "non scaduto" ?></td>
+                <td><?php echo $task->isExpired() ? "scaduto" . "|" . $task->expirationDate : "non scaduto" ?></td>
             </tr>
 
         <?php } ?>
