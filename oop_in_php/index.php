@@ -66,7 +66,7 @@ $taskListObj = array_map(function ($taskArray) {
 
         <?php foreach ($taskListObj as $key => $task) { ?>
             <!-- qui dentro possiamo mettere codice HTML -->
-
+            
             <tr>
                 <td><?= $key ?> </td>
                 <td><?php echo $task->taskName ?></td>

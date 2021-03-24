@@ -8,7 +8,7 @@
 function assertEquals($expected,$actual,$description = '',$line ='')
 {
 
-    if($expected === $actual)
+    if($expected == $actual)
     {
         $output = green(" PASS  \t$description $actual");
         echo $output;
