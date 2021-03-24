@@ -17,7 +17,7 @@ class Task
         $task = new DateTime($this->expirationDate);
         //se vero allora la task è scaudata
         //è una valutazione di verità
-        return $task > $today;
+        echo ($passato->getTimestamp()< $today->getTimestamp());return $task > $today;
     }
 
     public function getExpirationDate()
