@@ -29,7 +29,7 @@ echo $today-> format('l d M Y')."\n";
 
 //se true è già passato
     //data task                 //data di oggi
-echo ($passato->getTimestamp()< $today->getTimestamp());
+echo $passato->getTimestamp()< $today->getTimestamp();
 $settimana = [
     
         'it_IT'=>[
