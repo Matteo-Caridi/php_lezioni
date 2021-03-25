@@ -22,11 +22,11 @@ class Task
         //se vero allora la task è scaudata
         //è una valutazione di verità
         if ($task->getTimestamp()< $today->getTimestamp()){
+            echo $task -> format ('d/m/Y');
             return true;
         }else{
             return false;
         }
-        // return $task > $today;
     }
 
     public function getExpirationDate()

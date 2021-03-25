@@ -78,7 +78,7 @@ $taskListObj = array_map(function ($taskArray) {
             <tr>
                 <td><?= $key ?> </td>
                 <td><?php echo $task->taskName ?></td>
-                <td><?php echo $task->isExpired() ? "scaduto" . "|" . $task->expirationDate : "non scaduto" ?></td>
+                <td><?php echo $task->isExpired() ? "|" . "scaduto" : "non scaduto" ?></td>
             </tr>
 
         <?php } ?>
