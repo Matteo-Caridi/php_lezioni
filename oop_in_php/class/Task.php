@@ -20,11 +20,9 @@ class Task
         // $task -> getTimestamp();
         // echo $task-> format('d F Y')."\t";
         //se vero allora la task è scaudata
-        //è una valutazione di verità
-        if ($task->getTimestamp()< $today->getTimestamp()){
-            echo $task -> format ('d/m/Y');
-            return true;
-        }else{
+        //è una valutazione di verita
+        if ($today->getTimestamp()>$task->getTimestamp()){
+            // echo $task -> format ('d/m/Y');
             return false;
         }
     }
