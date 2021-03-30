@@ -17,14 +17,13 @@ class Task
         //get_class($today) --> DateTime
 
         $task = new DateTime($this->expirationDate);
-        // $task -> getTimestamp();
-        // echo $task-> format('d F Y')."\t";
-        //se vero allora la task è scaudata
-        //è una valutazione di verita
-        if ($today->getTimestamp()>$task->getTimestamp()){
-            // echo $task -> format ('d/m/Y');
+     
+        if($today->format('Ymd')===$task-> format('Ymd')){
             return false;
         }
+
+        return ($today->getTimestamp()>$task->getTimestamp());
+    
     }
 
     public function getExpirationDate()
