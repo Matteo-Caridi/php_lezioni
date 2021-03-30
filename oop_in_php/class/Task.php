@@ -8,23 +8,26 @@ class Task
     public $status;
     public $expirationDate;
 
-    public function isExpired(): bool
+    public function isExpired(DateTime $expiration): bool
     {
         //istanza della classe DateTime
         $today = new DateTime();
                 
         //print_r(gettype($today)); --> ci darà object
         //get_class($today) --> DateTime
-
-        $task = new DateTime($this->expirationDate);
-        // $task -> getTimestamp();
-        // echo $task-> format('d F Y')."\t";
-        //se vero allora la task è scaudata
-        //è una valutazione di verita
-        if ($today->getTimestamp()>$task->getTimestamp()){
-            // echo $task -> format ('d/m/Y');
-            return false;
+        try {
+            $task = new DateTime($this->expirationDate);
+            //verifichiamo se la scadenza è oggi o no
+            if($expiration->format('Ymd')===$task-> format('Ymd')){
+                return false;
+            }
+    
+            return ($today->getTimestamp()>$task->getTimestamp());
+            
+        } catch (\Throwable $th) {
+            return $th;
         }
+    
     }
 
     public function getExpirationDate()
